@@ -9,7 +9,8 @@ export default function Hero() {
 
   const handleWhatsAppClick = () => {
     trackWhatsAppClick('hero_section');
-    window.open(`https://wa.me/201000755755?text=${encodeURIComponent(t.hero.whatsappUs)}`, '_blank');
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201000755755';
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t.hero.whatsappUs)}`, '_blank');
   };
 
   const scrollToBooking = () => {

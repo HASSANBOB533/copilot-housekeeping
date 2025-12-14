@@ -29,9 +29,7 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
+
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || '';

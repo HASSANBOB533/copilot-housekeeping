@@ -46,23 +46,28 @@ export default function BookingForm() {
     'Fouka Bay',
   ];
 
+  const sanitizeInput = (input: string): string => {
+    return input.replace(/[<>]/g, '').trim();
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     trackBookingClick(formData.serviceType);
 
     const message = `
 New Booking Request:
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Service: ${formData.serviceType}
-Property Size: ${formData.propertySize}
-Area: ${formData.area}
-Preferred Date: ${formData.preferredDate}
-Notes: ${formData.notes}
+Name: ${sanitizeInput(formData.name)}
+Phone: ${sanitizeInput(formData.phone)}
+Email: ${sanitizeInput(formData.email)}
+Service: ${sanitizeInput(formData.serviceType)}
+Property Size: ${sanitizeInput(formData.propertySize)}
+Area: ${sanitizeInput(formData.area)}
+Preferred Date: ${sanitizeInput(formData.preferredDate)}
+Notes: ${sanitizeInput(formData.notes)}
     `.trim();
 
-    window.open(`https://wa.me/201000755755?text=${encodeURIComponent(message)}`, '_blank');
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201000755755';
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (

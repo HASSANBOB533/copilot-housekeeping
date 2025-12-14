@@ -32,7 +32,8 @@ export default function PricingCalculator() {
     trackQuoteRequest(serviceType, estimatedPrice);
     const service = serviceOptions.find(s => s.value === serviceType)?.label || '';
     const message = `Hello! I'd like to get a quote for ${service}. Property size: ${size} ${serviceOptions.find(s => s.value === serviceType)?.unit}. Estimated price: ${estimatedPrice.toLocaleString()} EGP`;
-    window.open(`https://wa.me/201000755755?text=${encodeURIComponent(message)}`, '_blank');
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201000755755';
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   const showAddOns = () => {

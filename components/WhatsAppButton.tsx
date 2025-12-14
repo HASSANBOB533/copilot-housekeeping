@@ -3,10 +3,12 @@
 import { FaWhatsapp } from 'react-icons/fa';
 import { trackWhatsAppClick } from '@/lib/analytics';
 
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201000755755';
+
 export default function WhatsAppButton() {
   const handleClick = () => {
     trackWhatsAppClick('floating_button');
-    window.open(`https://wa.me/201000755755?text=Hello! I'm interested in your cleaning services.`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=Hello! I'm interested in your cleaning services.`, '_blank');
   };
 
   return (
