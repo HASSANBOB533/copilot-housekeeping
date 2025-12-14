@@ -24,16 +24,16 @@ export default function Footer() {
     <>
       <footer id="contact" className="bg-gray-900 text-white">
         <div className="container mx-auto px-4 py-12">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Contact Info */}
             <div>
               <h3 className="text-xl font-bold mb-4 text-gold-yellow">{t.footer.contact}</h3>
               <div className="space-y-3">
-                <a href="tel:01000755755" className="flex items-start gap-3 hover:text-gold-yellow transition-colors">
+                <a href="tel:+201273518887" className="flex items-start gap-3 hover:text-gold-yellow transition-colors">
                   <FaPhone className="mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium">{t.footer.phone}</div>
-                    <div className="text-sm text-gray-400">01000755755</div>
+                    <div className="text-sm text-gray-400">+20 127 351 8887</div>
                   </div>
                 </a>
                 <a href="mailto:cs@bobhomecare.com" className="flex items-start gap-3 hover:text-gold-yellow transition-colors">
@@ -93,9 +93,9 @@ export default function Footer() {
             </div>
 
             {/* Social Media */}
-            <div>
+            <div className="sm:col-span-2 lg:col-span-1">
               <h3 className="text-xl font-bold mb-4 text-gold-yellow">{t.footer.followUs}</h3>
-              <div className="flex gap-4 mb-6">
+              <div className="flex gap-4 mb-6 justify-start sm:justify-start">
                 <a
                   href="https://www.facebook.com/BestofBedzHomeCare/"
                   target="_blank"
@@ -133,7 +133,7 @@ export default function Footer() {
                   <FaLinkedin />
                 </a>
                 <a
-                  href="https://wa.me/201000755755"
+                  href="https://wa.me/201273518887"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-2xl hover:text-gold-yellow transition-colors"
@@ -163,10 +163,10 @@ export default function Footer() {
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 z-50 bg-primary-green text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
+          className="fixed bottom-20 md:bottom-6 left-6 z-50 bg-primary-green text-white p-3 md:p-4 rounded-full shadow-lg hover:scale-110 transition-transform w-12 h-12 md:w-14 md:h-14 flex items-center justify-center"
           aria-label="Back to top"
         >
-          <FaArrowUp size={24} />
+          <FaArrowUp className="w-5 h-5 md:w-6 md:h-6" />
         </button>
       )}
     </>

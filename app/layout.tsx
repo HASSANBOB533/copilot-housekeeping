@@ -76,7 +76,7 @@ export default function RootLayout({
               alternateName: 'BOB Home Care',
               description: 'Professional cleaning services in Cairo and North Coast, Egypt',
               url: 'https://www.bobhomecare.com',
-              telephone: '+201000755755',
+              telephone: '+201273518887',
               email: 'cs@bobhomecare.com',
               address: {
                 '@type': 'PostalAddress',

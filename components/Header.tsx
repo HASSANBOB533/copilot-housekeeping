@@ -40,7 +40,7 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className={`flex items-center ${language === 'ar' ? 'order-2' : 'order-1'}`}>
             <div className="flex items-center gap-2">
@@ -70,7 +70,16 @@ export default function Header() {
           </nav>
 
           {/* CTA and Language Toggle */}
-          <div className={`flex items-center gap-4 ${language === 'ar' ? 'order-3' : 'order-3'}`}>
+          <div className={`flex items-center gap-2 md:gap-4 ${language === 'ar' ? 'order-3' : 'order-3'}`}>
+            <a
+              href="tel:+201273518887"
+              className="hidden sm:flex items-center gap-2 text-primary-green hover:text-royal-blue transition-colors"
+              aria-label="Call us"
+            >
+              <span className={`text-sm font-medium ${isScrolled ? 'text-primary-green' : 'text-white'}`}>
+                +20 127 351 8887
+              </span>
+            </a>
             <LanguageToggle />
             <button
               onClick={() => scrollToSection('#booking')}

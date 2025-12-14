@@ -36,23 +36,23 @@ export default function Testimonials() {
           {t.testimonials.title}
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow"
+              className="bg-white rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-shadow"
             >
-              <FaQuoteLeft className="text-primary-green text-4xl mb-4" />
-              <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+              <FaQuoteLeft className="text-primary-green text-3xl md:text-4xl mb-4" />
+              <p className="text-gray-700 text-base md:text-lg mb-4 md:mb-6 leading-relaxed">
                 {testimonial.text}
               </p>
               <div className="flex items-center gap-2 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className="text-gold-yellow" />
+                  <FaStar key={i} className="text-gold-yellow text-sm md:text-base" />
                 ))}
               </div>
-              <div className="font-bold text-gray-800 text-lg">{testimonial.name}</div>
-              <div className="text-gray-600">{testimonial.role}</div>
+              <div className="font-bold text-gray-800 text-base md:text-lg">{testimonial.name}</div>
+              <div className="text-gray-600 text-sm md:text-base">{testimonial.role}</div>
             </div>
           ))}
         </div>

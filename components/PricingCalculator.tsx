@@ -32,7 +32,7 @@ export default function PricingCalculator() {
     trackQuoteRequest(serviceType, estimatedPrice);
     const service = serviceOptions.find(s => s.value === serviceType)?.label || '';
     const message = `Hello! I'd like to get a quote for ${service}. Property size: ${size} ${serviceOptions.find(s => s.value === serviceType)?.unit}. Estimated price: ${estimatedPrice.toLocaleString()} EGP`;
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201000755755';
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201273518887';
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -70,7 +70,7 @@ export default function PricingCalculator() {
                   setSize(0);
                   setAddOns({ laundry: false, gardenSmall: false, gardenLarge: false, kitchenDeep: false });
                 }}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
               >
                 {serviceOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -91,7 +91,7 @@ export default function PricingCalculator() {
                   value={size}
                   onChange={(e) => setSize(Number(e.target.value))}
                   min="0"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                   placeholder={`Enter ${serviceOptions.find(s => s.value === serviceType)?.unit}`}
                 />
               </div>
