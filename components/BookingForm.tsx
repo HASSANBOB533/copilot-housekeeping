@@ -66,7 +66,7 @@ Preferred Date: ${sanitizeInput(formData.preferredDate)}
 Notes: ${sanitizeInput(formData.notes)}
     `.trim();
 
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201000755755';
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201273518887';
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -90,7 +90,7 @@ Notes: ${sanitizeInput(formData.notes)}
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                   placeholder={t.booking.name}
                 />
               </div>
@@ -105,7 +105,7 @@ Notes: ${sanitizeInput(formData.notes)}
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                   placeholder={t.booking.phone}
                 />
               </div>
@@ -119,7 +119,7 @@ Notes: ${sanitizeInput(formData.notes)}
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                   placeholder={t.booking.email}
                 />
               </div>
@@ -133,7 +133,7 @@ Notes: ${sanitizeInput(formData.notes)}
                   required
                   value={formData.serviceType}
                   onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                 >
                   <option value="">{t.booking.selectService}</option>
                   {services.map((service) => (
@@ -153,7 +153,7 @@ Notes: ${sanitizeInput(formData.notes)}
                   type="text"
                   value={formData.propertySize}
                   onChange={(e) => setFormData({ ...formData, propertySize: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                   placeholder={t.booking.propertySize}
                 />
               </div>
@@ -167,7 +167,7 @@ Notes: ${sanitizeInput(formData.notes)}
                   required
                   value={formData.area}
                   onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                 >
                   <option value="">{t.booking.selectArea}</option>
                   {areas.map((area) => (
@@ -187,7 +187,7 @@ Notes: ${sanitizeInput(formData.notes)}
                   type="date"
                   value={formData.preferredDate}
                   onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                 />
               </div>
 
@@ -200,7 +200,7 @@ Notes: ${sanitizeInput(formData.notes)}
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
                   placeholder={t.booking.notes}
                 />
               </div>

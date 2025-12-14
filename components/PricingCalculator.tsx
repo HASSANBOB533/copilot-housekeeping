@@ -32,7 +32,7 @@ export default function PricingCalculator() {
     trackQuoteRequest(serviceType, estimatedPrice);
     const service = serviceOptions.find(s => s.value === serviceType)?.label || '';
     const message = `Hello! I'd like to get a quote for ${service}. Property size: ${size} ${serviceOptions.find(s => s.value === serviceType)?.unit}. Estimated price: ${estimatedPrice.toLocaleString()} EGP`;
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201000755755';
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201273518887';
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -53,15 +53,15 @@ export default function PricingCalculator() {
   };
 
   const upholsteryItemsList = [
-    { key: 'armchair', label: t.services.upholstery.armchair, price: 250 },
-    { key: 'singleSeat', label: t.services.upholstery.singleSeat, price: 350 },
-    { key: 'twoSeater', label: t.services.upholstery.twoSeater, price: 400 },
-    { key: 'threeSeater', label: t.services.upholstery.threeSeater, price: 600 },
-    { key: 'fourSeater', label: t.services.upholstery.fourSeater, price: 800 },
-    { key: 'lShape', label: t.services.upholstery.lShape, price: 1000 },
-    { key: 'sectional', label: t.services.upholstery.sectional, price: 1200 },
-    { key: 'smallMattress', label: t.services.upholstery.smallMattress, price: 400 },
-    { key: 'largeMattress', label: t.services.upholstery.largeMattress, price: 600 },
+    { key: 'armchair', label: 'Armchair', price: 250 },
+    { key: 'singleSeat', label: 'Single Seat Sofa', price: 350 },
+    { key: 'twoSeater', label: '2-Seater Sofa', price: 400 },
+    { key: 'threeSeater', label: '3-Seater Sofa', price: 600 },
+    { key: 'fourSeater', label: '4-Seater Sofa', price: 800 },
+    { key: 'lShape', label: 'L-Shape Sofa', price: 1000 },
+    { key: 'sectional', label: 'Sectional Sofa', price: 1200 },
+    { key: 'smallMattress', label: 'Small Mattress (120x200)', price: 400 },
+    { key: 'largeMattress', label: 'Large Mattress (180x200)', price: 600 },
   ];
 
   return (
@@ -88,7 +88,7 @@ export default function PricingCalculator() {
                   setSize(0);
                   setAddOns({ laundry: false, gardenSize: 0, kitchenDeep: false, upholsteryItems: {} });
                 }}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
               >
                 {serviceOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -109,8 +109,8 @@ export default function PricingCalculator() {
                   value={size}
                   onChange={(e) => setSize(Number(e.target.value))}
                   min="0"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
-                  placeholder={t.calculator.enterPropertySize}
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                  placeholder={`Enter ${serviceOptions.find(s => s.value === serviceType)?.unit}`}
                 />
               </div>
             )}
@@ -137,15 +137,15 @@ export default function PricingCalculator() {
                   {showAddOns().garden && (
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t.calculator.gardenSize}
+                        Garden Size (m²)
                       </label>
                       <input
                         type="number"
                         value={addOns.gardenSize || ''}
                         onChange={(e) => setAddOns({ ...addOns, gardenSize: Number(e.target.value) })}
                         min="0"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
-                        placeholder={t.calculator.enterSizeInSqm}
+                        className="w-full px-4 py-3 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                        placeholder="Enter garden size in m²"
                       />
                     </div>
                   )}
@@ -159,7 +159,7 @@ export default function PricingCalculator() {
                         className="w-5 h-5 text-primary-green border-gray-300 rounded focus:ring-primary-green"
                       />
                       <span className="text-gray-700">
-                        {serviceType === 'periodical' ? t.calculator.kitchenToolsOven : t.calculator.kitchenDeep}
+                        {serviceType === 'periodical' ? 'Kitchen Tools & Oven Clean' : t.calculator.kitchenDeep}
                       </span>
                     </label>
                   )}
@@ -167,7 +167,7 @@ export default function PricingCalculator() {
                   {showAddOns().upholstery && (
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t.calculator.upholsteryItems}
+                        Upholstery Items
                       </label>
                       <div className="space-y-2 max-h-60 overflow-y-auto border border-gray-300 rounded-lg p-3">
                         {upholsteryItemsList.map((item) => (
@@ -208,17 +208,17 @@ export default function PricingCalculator() {
                 </div>
                 {serviceType === 'upholstery' && estimatedPrice === 1500 && (
                   <div className="text-sm mt-3 bg-white/20 rounded-lg px-4 py-2">
-                    {t.calculator.minimumApplies}
+                    Minimum order applies
                   </div>
                 )}
                 {serviceType === 'deepCleaning' && size > 0 && size < 50 && (
                   <div className="text-sm mt-3 bg-white/20 rounded-lg px-4 py-2">
-                    {t.calculator.minimumApplies} (50 m²)
+                    Minimum order applies (50 m²)
                   </div>
                 )}
                 {(serviceType === 'moveInOut' || serviceType === 'moveInOutHeavy') && size > 0 && size < 50 && (
                   <div className="text-sm mt-3 bg-white/20 rounded-lg px-4 py-2">
-                    {t.calculator.minimumApplies} (50 m²)
+                    Minimum order applies (50 m²)
                   </div>
                 )}
               </div>

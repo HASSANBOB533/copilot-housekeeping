@@ -9,7 +9,7 @@ export default function Hero() {
 
   const handleWhatsAppClick = () => {
     trackWhatsAppClick('hero_section');
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201000755755';
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201273518887';
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t.hero.whatsappUs)}`, '_blank');
   };
 
@@ -26,7 +26,7 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         {/* Hero bedroom image - replace with actual image once uploaded to /public/images/hero-bedroom.jpg */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-green/90 to-royal-blue/80">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-green/95 to-royal-blue/85 md:from-primary-green/90 md:to-royal-blue/80">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzMuMzE0IDAgNiAyLjY4NiA2IDZzLTIuNjg2IDYtNiA2LTYtMi42ODYtNi02IDIuNjg2LTYgNi02ek0yNCAzNmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
         </div>
         {/* When hero-bedroom.jpg is added, uncomment this:
@@ -42,15 +42,15 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 py-32 relative z-10">
+      <div className="container mx-auto px-4 py-24 sm:py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-white">
           {/* Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             {t.hero.headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl mb-10 text-gray-100">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 md:mb-10 text-gray-100">
             {t.hero.subheadline}
           </p>
 
@@ -78,19 +78,19 @@ export default function Hero() {
           </div>
 
           {/* Trust Badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-3xl mx-auto">
             {[
               { label: '10+ Years', sublabel: 'Experience' },
               { label: '1000+', sublabel: 'Happy Clients' },
               { label: '100%', sublabel: 'Satisfaction' },
               { label: '24/7', sublabel: 'Support' },
             ].map((badge, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-3 md:p-4">
                 <div className="flex items-center justify-center mb-2">
-                  <FaCheckCircle className="text-gold-yellow" size={24} />
+                  <FaCheckCircle className="text-gold-yellow" size={20} />
                 </div>
-                <div className="text-2xl font-bold">{badge.label}</div>
-                <div className="text-sm text-gray-200">{badge.sublabel}</div>
+                <div className="text-lg md:text-2xl font-bold">{badge.label}</div>
+                <div className="text-xs md:text-sm text-gray-200">{badge.sublabel}</div>
               </div>
             ))}
           </div>
