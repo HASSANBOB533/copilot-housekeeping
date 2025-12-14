@@ -36,6 +36,13 @@ export default function Footer() {
                     <div className="text-sm text-gray-400">+20 127 351 8887</div>
                   </div>
                 </a>
+                <a href="https://wa.me/201273518887" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-gold-yellow transition-colors">
+                  <FaWhatsapp className="mt-1 flex-shrink-0" />
+                  <div>
+                    <div className="font-medium">WhatsApp</div>
+                    <div className="text-sm text-gray-400">+20 127 351 8887</div>
+                  </div>
+                </a>
                 <a href="mailto:cs@bobhomecare.com" className="flex items-start gap-3 hover:text-gold-yellow transition-colors">
                   <FaEnvelope className="mt-1 flex-shrink-0" />
                   <div>
