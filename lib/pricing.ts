@@ -70,27 +70,15 @@ export const upholsteryPricing = {
   }
 };
 
-export const upholsteryItems = {
-  armchair: 250,
-  singleSeat: 350,
-  twoSeater: 400,
-  threeSeater: 600,
-  fourSeater: 800,
-  lShape: 1000,
-  sectional: 1200,
-  smallMattress: 400,
-  largeMattress: 600
-};
-
 export const serviceApartmentAddons = {
   gardenPerSqm: 5,
-  upholstery: upholsteryItems
+  upholstery: upholsteryPricing.items
 };
 
 export const periodicalAddons = {
   kitchenDeepClean: 250,
   gardenPerSqm: 3,
-  upholstery: upholsteryItems
+  upholstery: upholsteryPricing.items
 };
 
 export const calculatePrice = (
@@ -113,7 +101,7 @@ export const calculatePrice = (
       if (addOns.gardenSize) price += addOns.gardenSize * serviceApartmentAddons.gardenPerSqm;
       if (addOns.upholsteryItems) {
         Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
-          price += (upholsteryItems[item as keyof typeof upholsteryItems] || 0) * count;
+          price += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
         });
       }
       break;
@@ -124,7 +112,7 @@ export const calculatePrice = (
       if (addOns.gardenSize) price += addOns.gardenSize * deepCleaningPricing.gardenPerSqm;
       if (addOns.upholsteryItems) {
         Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
-          price += (upholsteryItems[item as keyof typeof upholsteryItems] || 0) * count;
+          price += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
         });
       }
       break;
@@ -144,7 +132,7 @@ export const calculatePrice = (
       if (addOns.gardenSize) price += addOns.gardenSize * periodicalAddons.gardenPerSqm;
       if (addOns.upholsteryItems) {
         Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
-          price += (upholsteryItems[item as keyof typeof upholsteryItems] || 0) * count;
+          price += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
         });
       }
       break;
@@ -153,7 +141,7 @@ export const calculatePrice = (
       price = 0;
       if (addOns.upholsteryItems) {
         Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
-          price += (upholsteryItems[item as keyof typeof upholsteryItems] || 0) * count;
+          price += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
         });
       }
       price = Math.max(price, upholsteryPricing.minimum);

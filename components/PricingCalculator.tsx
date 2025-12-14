@@ -110,7 +110,7 @@ export default function PricingCalculator() {
                   onChange={(e) => setSize(Number(e.target.value))}
                   min="0"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
-                  placeholder={`Enter ${serviceOptions.find(s => s.value === serviceType)?.unit}`}
+                  placeholder={t.calculator.enterPropertySize}
                 />
               </div>
             )}
@@ -145,7 +145,7 @@ export default function PricingCalculator() {
                         onChange={(e) => setAddOns({ ...addOns, gardenSize: Number(e.target.value) })}
                         min="0"
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
-                        placeholder="Enter size in m²"
+                        placeholder={t.calculator.enterSizeInSqm}
                       />
                     </div>
                   )}

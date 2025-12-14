@@ -127,7 +127,9 @@ export const translations = {
       selectItems: "Select items to clean",
       estimatedPrice: "Estimated Price",
       minimumApplies: "Minimum order applies",
-      getQuote: "Get Quote on WhatsApp"
+      getQuote: "Get Quote on WhatsApp",
+      enterSizeInSqm: "Enter size in m²",
+      enterPropertySize: "Enter property size"
     },
     
     // How It Works
@@ -432,7 +434,9 @@ export const translations = {
       selectItems: "اختر القطع للتنظيف",
       estimatedPrice: "السعر التقديري",
       minimumApplies: "ينطبق الحد الأدنى للطلب",
-      getQuote: "احصل على عرض سعر عبر واتساب"
+      getQuote: "احصل على عرض سعر عبر واتساب",
+      enterSizeInSqm: "أدخل الحجم بالمتر المربع",
+      enterPropertySize: "أدخل حجم العقار"
     },
     
     // How It Works
