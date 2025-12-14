@@ -44,9 +44,19 @@ export default function Header() {
           {/* Logo */}
           <div className={`flex items-center ${language === 'ar' ? 'order-2' : 'order-1'}`}>
             <div className="flex items-center gap-2">
+              {/* Placeholder logo - replace with actual logo once uploaded to /public/images/logo.png */}
               <div className="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-xl">BOB</span>
               </div>
+              {/* When logo.png is added, uncomment this:
+              <Image 
+                src="/images/logo.png" 
+                alt="Best of Bedz Home Care Logo"
+                width={48}
+                height={48}
+                className="rounded-full"
+              />
+              */}
               <div className="hidden md:block">
                 <div className="text-lg font-bold text-primary-green">Best of Bedz</div>
                 <div className="text-xs text-gray-600">Home Care</div>

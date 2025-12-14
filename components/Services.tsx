@@ -21,8 +21,6 @@ export default function Services() {
                 <th className="px-4 py-3 text-left">{t.services.serviceApartments.bedrooms}</th>
                 <th className="px-4 py-3 text-right">{t.services.serviceApartments.basePrice}</th>
                 <th className="px-4 py-3 text-right">{t.services.serviceApartments.laundry}</th>
-                <th className="px-4 py-3 text-right">{t.services.serviceApartments.gardenSmall}</th>
-                <th className="px-4 py-3 text-right">{t.services.serviceApartments.gardenLarge}</th>
               </tr>
             </thead>
             <tbody>
@@ -31,12 +29,24 @@ export default function Services() {
                   <td className="px-4 py-3 font-medium">{row.bedrooms}</td>
                   <td className="px-4 py-3 text-right">{row.basePrice.toLocaleString()} {t.common.egp}</td>
                   <td className="px-4 py-3 text-right">+{row.laundry.toLocaleString()} {t.common.egp}</td>
-                  <td className="px-4 py-3 text-right">+{row.gardenSmall.toLocaleString()} {t.common.egp}</td>
-                  <td className="px-4 py-3 text-right">+{row.gardenLarge.toLocaleString()} {t.common.egp}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+          <div className="mt-6 space-y-4">
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h4 className="font-bold text-lg mb-2">{t.services.serviceApartments.hospitalityItems}</h4>
+              <p className="text-xl text-primary-green font-bold">{t.services.serviceApartments.priceOnRequest}</p>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h4 className="font-bold text-lg mb-2">{t.services.serviceApartments.garden}</h4>
+              <p className="text-xl text-primary-green font-bold">{t.services.serviceApartments.gardenPerSqm}</p>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-4">
+              <p className="font-medium text-gray-700">{t.services.serviceApartments.upholsteryAddons}</p>
+              <p className="text-sm text-gray-600 mt-1">Chairs: 250-350 EGP • Sofas: 400-1,200 EGP • Mattresses: 400-600 EGP</p>
+            </div>
+          </div>
         </div>
       ),
     },
@@ -51,9 +61,19 @@ export default function Services() {
             <div className="text-xl">{t.services.deepCleaning.minimum}</div>
             <div className="mt-4 text-lg opacity-90">{t.services.deepCleaning.includesSteam}</div>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6">
-            <h4 className="font-bold text-xl mb-2">{t.services.deepCleaning.kitchenAddon}</h4>
-            <p className="text-2xl text-primary-green font-bold">{t.services.deepCleaning.kitchenPrice}</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-gray-50 rounded-xl p-6">
+              <h4 className="font-bold text-xl mb-2">{t.services.deepCleaning.kitchenAddon}</h4>
+              <p className="text-2xl text-primary-green font-bold">{t.services.deepCleaning.kitchenPrice}</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-6">
+              <h4 className="font-bold text-xl mb-2">{t.services.deepCleaning.garden}</h4>
+              <p className="text-2xl text-primary-green font-bold">{t.services.deepCleaning.gardenPerSqm}</p>
+            </div>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <p className="font-medium text-gray-700">{t.services.deepCleaning.upholsteryAddons}</p>
+            <p className="text-sm text-gray-600 mt-1">Chairs: 250-350 EGP • Sofas: 400-1,200 EGP • Mattresses: 400-600 EGP</p>
           </div>
         </div>
       ),
@@ -63,16 +83,21 @@ export default function Services() {
       title: t.services.moveInOut.title,
       subtitle: t.services.moveInOut.subtitle,
       content: (
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-royal-blue to-primary-green text-white rounded-xl p-8 text-center">
-            <h4 className="text-2xl font-bold mb-4">{t.services.moveInOut.normal}</h4>
-            <div className="text-4xl font-bold mb-2">{t.services.moveInOut.normalPrice}</div>
-            <div className="text-lg opacity-90">{t.services.moveInOut.normalMin}</div>
+        <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-br from-royal-blue to-primary-green text-white rounded-xl p-8 text-center">
+              <h4 className="text-2xl font-bold mb-4">{t.services.moveInOut.normal}</h4>
+              <div className="text-4xl font-bold mb-2">{t.services.moveInOut.normalPrice}</div>
+              <div className="text-lg opacity-90">{t.services.moveInOut.normalMin}</div>
+            </div>
+            <div className="bg-gradient-to-br from-primary-green to-royal-blue text-white rounded-xl p-8 text-center">
+              <h4 className="text-2xl font-bold mb-4">{t.services.moveInOut.heavy}</h4>
+              <div className="text-4xl font-bold mb-2">{t.services.moveInOut.heavyPrice}</div>
+              <div className="text-lg opacity-90">{t.services.moveInOut.heavyMin}</div>
+            </div>
           </div>
-          <div className="bg-gradient-to-br from-primary-green to-royal-blue text-white rounded-xl p-8 text-center">
-            <h4 className="text-2xl font-bold mb-4">{t.services.moveInOut.heavy}</h4>
-            <div className="text-4xl font-bold mb-2">{t.services.moveInOut.heavyPrice}</div>
-            <div className="text-lg opacity-90">{t.services.moveInOut.heavyMin}</div>
+          <div className="bg-gray-100 rounded-lg p-4 text-center">
+            <p className="font-medium text-gray-700">{t.services.moveInOut.noAddons}</p>
           </div>
         </div>
       ),
@@ -113,6 +138,20 @@ export default function Services() {
               </div>
             </div>
           </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h4 className="font-bold text-lg mb-2">{t.services.periodical.kitchenAddon}</h4>
+              <p className="text-xl text-primary-green font-bold">{t.services.periodical.kitchenPrice}</p>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h4 className="font-bold text-lg mb-2">{t.services.periodical.garden}</h4>
+              <p className="text-xl text-primary-green font-bold">{t.services.periodical.gardenPerSqm}</p>
+            </div>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <p className="font-medium text-gray-700">{t.services.periodical.upholsteryAddons}</p>
+            <p className="text-sm text-gray-600 mt-1">Chairs: 250-350 EGP • Sofas: 400-1,200 EGP • Mattresses: 400-600 EGP</p>
+          </div>
         </div>
       ),
     },
@@ -124,19 +163,59 @@ export default function Services() {
         <div className="space-y-6">
           <div className="bg-primary-green text-white rounded-xl p-6 text-center">
             <p className="text-xl font-bold">{t.services.upholstery.minimum}</p>
+            <p className="text-sm mt-2 opacity-90">{t.services.upholstery.noAddons}</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gray-50 rounded-xl p-6 text-center">
-              <h4 className="font-bold text-xl mb-2 text-gray-800">{t.services.upholstery.chairs}</h4>
-              <p className="text-2xl text-primary-green font-bold">{t.services.upholstery.chairsPrice}</p>
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-bold text-lg mb-3 text-gray-800">{t.services.upholstery.chairs}</h4>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.armchair}</p>
+                  <p className="text-lg font-bold text-primary-green">250 {t.common.egp}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.singleSeat}</p>
+                  <p className="text-lg font-bold text-primary-green">350 {t.common.egp}</p>
+                </div>
+              </div>
             </div>
-            <div className="bg-gray-50 rounded-xl p-6 text-center">
-              <h4 className="font-bold text-xl mb-2 text-gray-800">{t.services.upholstery.sofas}</h4>
-              <p className="text-2xl text-primary-green font-bold">{t.services.upholstery.sofasPrice}</p>
+            <div>
+              <h4 className="font-bold text-lg mb-3 text-gray-800">{t.services.upholstery.sofas}</h4>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.twoSeater}</p>
+                  <p className="text-lg font-bold text-primary-green">400 {t.common.egp}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.threeSeater}</p>
+                  <p className="text-lg font-bold text-primary-green">600 {t.common.egp}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.fourSeater}</p>
+                  <p className="text-lg font-bold text-primary-green">800 {t.common.egp}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.lShape}</p>
+                  <p className="text-lg font-bold text-primary-green">1,000 {t.common.egp}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.sectional}</p>
+                  <p className="text-lg font-bold text-primary-green">1,200 {t.common.egp}</p>
+                </div>
+              </div>
             </div>
-            <div className="bg-gray-50 rounded-xl p-6 text-center">
-              <h4 className="font-bold text-xl mb-2 text-gray-800">{t.services.upholstery.mattresses}</h4>
-              <p className="text-2xl text-primary-green font-bold">{t.services.upholstery.mattressesPrice}</p>
+            <div>
+              <h4 className="font-bold text-lg mb-3 text-gray-800">{t.services.upholstery.mattresses}</h4>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.smallMattress}</p>
+                  <p className="text-lg font-bold text-primary-green">400 {t.common.egp}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">{t.services.upholstery.largeMattress}</p>
+                  <p className="text-lg font-bold text-primary-green">600 {t.common.egp}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
