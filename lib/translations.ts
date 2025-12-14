@@ -46,28 +46,35 @@ export const translations = {
         bedrooms: "Bedrooms",
         basePrice: "Base Price",
         laundry: "+ Laundry",
-        gardenSmall: "+ Garden ≤50m²",
-        gardenLarge: "+ Garden >50m²",
+        garden: "+ Garden/Terrace",
+        gardenPerSqm: "5 EGP/m²",
+        hospitalityItems: "Hospitality Items",
+        priceOnRequest: "Price on Request",
+        upholsteryAddons: "Upholstery Add-ons",
         studio: "Studio/1BR"
       },
       deepCleaning: {
         title: "Deep Cleaning",
         subtitle: "Comprehensive cleaning with steam sanitization",
-        pricePerSqm: "35 EGP per square meter",
-        minimum: "(Minimum 3,000 EGP)",
+        pricePerSqm: "30 EGP per square meter",
+        minimum: "(Minimum 1,500 EGP / 50 m²)",
         includesSteam: "Includes steam sanitization",
-        kitchenAddon: "Kitchen Deep Clean",
-        kitchenPrice: "+1,500-3,000 EGP"
+        kitchenAddon: "Kitchen Deep Clean (heavy degreasing)",
+        kitchenPrice: "+1,000 EGP",
+        garden: "+ Garden/Terrace",
+        gardenPerSqm: "8 EGP/m²",
+        upholsteryAddons: "Upholstery Add-ons"
       },
       moveInOut: {
         title: "Move-In/Move-Out",
-        subtitle: "Fresh start for your new home",
-        normal: "Normal",
-        normalPrice: "50 EGP/m²",
-        normalMin: "(Minimum 5,000 EGP)",
-        heavy: "Heavy",
-        heavyPrice: "65 EGP/m²",
-        heavyMin: "(Minimum 6,500 EGP)"
+        subtitle: "Opening/Closing cleaning service",
+        normal: "Normal Construction",
+        normalPrice: "40 EGP/m²",
+        normalMin: "(Minimum 2,000 EGP / 50 m²)",
+        heavy: "Heavy Construction",
+        heavyPrice: "50 EGP/m²",
+        heavyMin: "(Minimum 2,500 EGP / 50 m²)",
+        noAddons: "No add-ons available"
       },
       periodical: {
         title: "Periodical Cleaning",
@@ -77,18 +84,30 @@ export const translations = {
         visits4: "4 visits: 5% off",
         visits8: "8 visits: 10% off",
         visits12: "12 visits: 15% off",
-        visits24: "24 visits: 20% off"
+        visits24: "24 visits: 20% off",
+        kitchenAddon: "Kitchen Tools/Oven Deep Clean",
+        kitchenPrice: "+250 EGP",
+        garden: "+ Garden/Terrace",
+        gardenPerSqm: "3 EGP/m²",
+        upholsteryAddons: "Upholstery Add-ons"
       },
       upholstery: {
         title: "Upholstery Cleaning",
         subtitle: "Professional furniture cleaning",
         minimum: "Minimum order: 1,500 EGP",
+        noAddons: "No add-ons available",
+        armchair: "Armchair/Salon chair",
+        singleSeat: "Single-seat sofa chair",
+        twoSeater: "2-seater sofa",
+        threeSeater: "3-seater sofa",
+        fourSeater: "4-seater sofa",
+        lShape: "L-shape sofa",
+        sectional: "Sectional sofa",
+        smallMattress: "Small mattress (single/twin)",
+        largeMattress: "Large mattress (double/king)",
         chairs: "Chairs",
-        chairsPrice: "200-250 EGP",
         sofas: "Sofas",
-        sofasPrice: "400-1,500 EGP",
-        mattresses: "Mattresses",
-        mattressesPrice: "400-600 EGP"
+        mattresses: "Mattresses"
       }
     },
     
@@ -101,10 +120,13 @@ export const translations = {
       squareMeters: "square meters",
       addOns: "Add-ons",
       laundry: "Laundry Service",
-      gardenSmall: "Garden ≤50m²",
-      gardenLarge: "Garden >50m²",
+      gardenSize: "Garden/Terrace Size (m²)",
       kitchenDeep: "Kitchen Deep Clean",
+      kitchenToolsOven: "Kitchen Tools/Oven Deep Clean",
+      upholsteryItems: "Upholstery Items",
+      selectItems: "Select items to clean",
       estimatedPrice: "Estimated Price",
+      minimumApplies: "Minimum order applies",
       getQuote: "Get Quote on WhatsApp"
     },
     
@@ -329,28 +351,35 @@ export const translations = {
         bedrooms: "غرف النوم",
         basePrice: "السعر الأساسي",
         laundry: "+ غسيل الملابس",
-        gardenSmall: "+ حديقة ≤50م²",
-        gardenLarge: "+ حديقة >50م²",
+        garden: "+ حديقة/شرفة",
+        gardenPerSqm: "5 جنيه/م²",
+        hospitalityItems: "مستلزمات الضيافة",
+        priceOnRequest: "السعر عند الطلب",
+        upholsteryAddons: "إضافات تنظيف الأثاث",
         studio: "استوديو/غرفة واحدة"
       },
       deepCleaning: {
         title: "التنظيف العميق",
         subtitle: "تنظيف شامل مع التعقيم بالبخار",
-        pricePerSqm: "35 جنيه للمتر المربع",
-        minimum: "(الحد الأدنى 3,000 جنيه)",
+        pricePerSqm: "30 جنيه للمتر المربع",
+        minimum: "(الحد الأدنى 1,500 جنيه / 50 م²)",
         includesSteam: "يشمل التعقيم بالبخار",
-        kitchenAddon: "تنظيف عميق للمطبخ",
-        kitchenPrice: "+1,500-3,000 جنيه"
+        kitchenAddon: "تنظيف عميق للمطبخ (إزالة الدهون الثقيلة)",
+        kitchenPrice: "+1,000 جنيه",
+        garden: "+ حديقة/شرفة",
+        gardenPerSqm: "8 جنيه/م²",
+        upholsteryAddons: "إضافات تنظيف الأثاث"
       },
       moveInOut: {
         title: "الانتقال للداخل/الخارج",
-        subtitle: "بداية جديدة لمنزلك الجديد",
-        normal: "عادي",
-        normalPrice: "50 جنيه/م²",
-        normalMin: "(الحد الأدنى 5,000 جنيه)",
-        heavy: "مكثف",
-        heavyPrice: "65 جنيه/م²",
-        heavyMin: "(الحد الأدنى 6,500 جنيه)"
+        subtitle: "خدمة التنظيف للافتتاح/الإغلاق",
+        normal: "بناء عادي",
+        normalPrice: "40 جنيه/م²",
+        normalMin: "(الحد الأدنى 2,000 جنيه / 50 م²)",
+        heavy: "بناء ثقيل",
+        heavyPrice: "50 جنيه/م²",
+        heavyMin: "(الحد الأدنى 2,500 جنيه / 50 م²)",
+        noAddons: "لا توجد إضافات متاحة"
       },
       periodical: {
         title: "التنظيف الدوري",
@@ -360,18 +389,30 @@ export const translations = {
         visits4: "4 زيارات: خصم 5٪",
         visits8: "8 زيارات: خصم 10٪",
         visits12: "12 زيارة: خصم 15٪",
-        visits24: "24 زيارة: خصم 20٪"
+        visits24: "24 زيارة: خصم 20٪",
+        kitchenAddon: "تنظيف عميق لأدوات المطبخ والفرن",
+        kitchenPrice: "+250 جنيه",
+        garden: "+ حديقة/شرفة",
+        gardenPerSqm: "3 جنيه/م²",
+        upholsteryAddons: "إضافات تنظيف الأثاث"
       },
       upholstery: {
         title: "تنظيف الأثاث المنجد",
         subtitle: "تنظيف احترافي للأثاث",
         minimum: "الحد الأدنى للطلب: 1,500 جنيه",
+        noAddons: "لا توجد إضافات متاحة",
+        armchair: "كرسي بذراعين/كرسي صالون",
+        singleSeat: "كرسي كنبة فردي",
+        twoSeater: "كنبة مقعدين",
+        threeSeater: "كنبة 3 مقاعد",
+        fourSeater: "كنبة 4 مقاعد",
+        lShape: "كنبة على شكل L",
+        sectional: "كنبة قطاعية",
+        smallMattress: "مرتبة صغيرة (فردية/توأم)",
+        largeMattress: "مرتبة كبيرة (مزدوجة/كينج)",
         chairs: "كراسي",
-        chairsPrice: "200-250 جنيه",
         sofas: "كنب",
-        sofasPrice: "400-1,500 جنيه",
-        mattresses: "مراتب",
-        mattressesPrice: "400-600 جنيه"
+        mattresses: "مراتب"
       }
     },
     
@@ -384,10 +425,13 @@ export const translations = {
       squareMeters: "متر مربع",
       addOns: "الإضافات",
       laundry: "خدمة الغسيل",
-      gardenSmall: "حديقة ≤50م²",
-      gardenLarge: "حديقة >50م²",
+      gardenSize: "حجم الحديقة/الشرفة (م²)",
       kitchenDeep: "تنظيف عميق للمطبخ",
+      kitchenToolsOven: "تنظيف عميق لأدوات المطبخ والفرن",
+      upholsteryItems: "قطع الأثاث",
+      selectItems: "اختر القطع للتنظيف",
       estimatedPrice: "السعر التقديري",
+      minimumApplies: "ينطبق الحد الأدنى للطلب",
       getQuote: "احصل على عرض سعر عبر واتساب"
     },
     

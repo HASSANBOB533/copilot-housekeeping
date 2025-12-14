@@ -2,17 +2,15 @@ export interface ServiceApartmentPricing {
   bedrooms: string;
   basePrice: number;
   laundry: number;
-  gardenSmall: number;
-  gardenLarge: number;
 }
 
 export const serviceApartmentPricing: ServiceApartmentPricing[] = [
-  { bedrooms: "Studio/1BR", basePrice: 1200, laundry: 250, gardenSmall: 350, gardenLarge: 500 },
-  { bedrooms: "2 Bedrooms", basePrice: 1500, laundry: 350, gardenSmall: 350, gardenLarge: 500 },
-  { bedrooms: "3 Bedrooms", basePrice: 2000, laundry: 500, gardenSmall: 350, gardenLarge: 750 },
-  { bedrooms: "4 Bedrooms", basePrice: 2500, laundry: 750, gardenSmall: 500, gardenLarge: 750 },
-  { bedrooms: "5 Bedrooms", basePrice: 3000, laundry: 1000, gardenSmall: 500, gardenLarge: 1000 },
-  { bedrooms: "6 Bedrooms", basePrice: 3500, laundry: 1250, gardenSmall: 500, gardenLarge: 1250 },
+  { bedrooms: "Studio/1BR", basePrice: 1500, laundry: 400 },
+  { bedrooms: "2 Bedrooms", basePrice: 2000, laundry: 600 },
+  { bedrooms: "3 Bedrooms", basePrice: 2500, laundry: 800 },
+  { bedrooms: "4 Bedrooms", basePrice: 3000, laundry: 1000 },
+  { bedrooms: "5 Bedrooms", basePrice: 4000, laundry: 1200 },
+  { bedrooms: "6 Bedrooms", basePrice: 5000, laundry: 1500 },
 ];
 
 export interface PeriodicalPricing {
@@ -22,11 +20,11 @@ export interface PeriodicalPricing {
 
 export const periodicalPricing: PeriodicalPricing[] = [
   { bedrooms: "Studio/1BR", pricePerVisit: 800 },
-  { bedrooms: "2 Bedrooms", pricePerVisit: 1000 },
-  { bedrooms: "3 Bedrooms", pricePerVisit: 1300 },
-  { bedrooms: "4 Bedrooms", pricePerVisit: 1600 },
-  { bedrooms: "5 Bedrooms", pricePerVisit: 1800 },
-  { bedrooms: "6 Bedrooms", pricePerVisit: 2000 },
+  { bedrooms: "2 Bedrooms", pricePerVisit: 1200 },
+  { bedrooms: "3 Bedrooms", pricePerVisit: 1500 },
+  { bedrooms: "4 Bedrooms", pricePerVisit: 2000 },
+  { bedrooms: "5 Bedrooms", pricePerVisit: 2500 },
+  { bedrooms: "6 Bedrooms", pricePerVisit: 3000 },
 ];
 
 export const periodicalDiscounts = {
@@ -37,28 +35,62 @@ export const periodicalDiscounts = {
 };
 
 export const deepCleaningPricing = {
-  pricePerSqm: 35,
-  minimum: 3000,
-  kitchenAddonMin: 1500,
-  kitchenAddonMax: 3000
+  pricePerSqm: 30,
+  minimum: 1500,
+  minimumSqm: 50,
+  kitchenDeepClean: 1000,
+  gardenPerSqm: 8
 };
 
 export const moveInOutPricing = {
   normal: {
-    pricePerSqm: 50,
-    minimum: 5000
+    pricePerSqm: 40,
+    minimum: 2000,
+    minimumSqm: 50
   },
   heavy: {
-    pricePerSqm: 65,
-    minimum: 6500
+    pricePerSqm: 50,
+    minimum: 2500,
+    minimumSqm: 50
   }
 };
 
 export const upholsteryPricing = {
   minimum: 1500,
-  chairs: { min: 200, max: 250 },
-  sofas: { min: 400, max: 1500 },
-  mattresses: { min: 400, max: 600 }
+  items: {
+    armchair: 250,
+    singleSeat: 350,
+    twoSeater: 400,
+    threeSeater: 600,
+    fourSeater: 800,
+    lShape: 1000,
+    sectional: 1200,
+    smallMattress: 400,
+    largeMattress: 600
+  }
+};
+
+export const upholsteryItems = {
+  armchair: 250,
+  singleSeat: 350,
+  twoSeater: 400,
+  threeSeater: 600,
+  fourSeater: 800,
+  lShape: 1000,
+  sectional: 1200,
+  smallMattress: 400,
+  largeMattress: 600
+};
+
+export const serviceApartmentAddons = {
+  gardenPerSqm: 5,
+  upholstery: upholsteryItems
+};
+
+export const periodicalAddons = {
+  kitchenDeepClean: 250,
+  gardenPerSqm: 3,
+  upholstery: upholsteryItems
 };
 
 export const calculatePrice = (
@@ -66,9 +98,9 @@ export const calculatePrice = (
   size: number,
   addOns: {
     laundry?: boolean;
-    gardenSmall?: boolean;
-    gardenLarge?: boolean;
+    gardenSize?: number;
     kitchenDeep?: boolean;
+    upholsteryItems?: { [key: string]: number };
   }
 ): number => {
   let price = 0;
@@ -78,13 +110,23 @@ export const calculatePrice = (
       const apartment = serviceApartmentPricing[size] || serviceApartmentPricing[0];
       price = apartment.basePrice;
       if (addOns.laundry) price += apartment.laundry;
-      if (addOns.gardenSmall) price += apartment.gardenSmall;
-      if (addOns.gardenLarge) price += apartment.gardenLarge;
+      if (addOns.gardenSize) price += addOns.gardenSize * serviceApartmentAddons.gardenPerSqm;
+      if (addOns.upholsteryItems) {
+        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
+          price += (upholsteryItems[item as keyof typeof upholsteryItems] || 0) * count;
+        });
+      }
       break;
       
     case 'deepCleaning':
       price = Math.max(size * deepCleaningPricing.pricePerSqm, deepCleaningPricing.minimum);
-      if (addOns.kitchenDeep) price += deepCleaningPricing.kitchenAddonMin;
+      if (addOns.kitchenDeep) price += deepCleaningPricing.kitchenDeepClean;
+      if (addOns.gardenSize) price += addOns.gardenSize * deepCleaningPricing.gardenPerSqm;
+      if (addOns.upholsteryItems) {
+        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
+          price += (upholsteryItems[item as keyof typeof upholsteryItems] || 0) * count;
+        });
+      }
       break;
       
     case 'moveInOut':
@@ -98,10 +140,23 @@ export const calculatePrice = (
     case 'periodical':
       const periodical = periodicalPricing[size] || periodicalPricing[0];
       price = periodical.pricePerVisit;
+      if (addOns.kitchenDeep) price += periodicalAddons.kitchenDeepClean;
+      if (addOns.gardenSize) price += addOns.gardenSize * periodicalAddons.gardenPerSqm;
+      if (addOns.upholsteryItems) {
+        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
+          price += (upholsteryItems[item as keyof typeof upholsteryItems] || 0) * count;
+        });
+      }
       break;
       
     case 'upholstery':
-      price = upholsteryPricing.minimum;
+      price = 0;
+      if (addOns.upholsteryItems) {
+        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
+          price += (upholsteryItems[item as keyof typeof upholsteryItems] || 0) * count;
+        });
+      }
+      price = Math.max(price, upholsteryPricing.minimum);
       break;
   }
   
