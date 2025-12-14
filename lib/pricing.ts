@@ -81,6 +81,16 @@ export const periodicalAddons = {
   upholstery: upholsteryPricing.items
 };
 
+const calculateUpholsteryAddons = (upholsteryItems?: { [key: string]: number }): number => {
+  let total = 0;
+  if (upholsteryItems) {
+    Object.entries(upholsteryItems).forEach(([item, count]) => {
+      total += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
+    });
+  }
+  return total;
+};
+
 export const calculatePrice = (
   serviceType: string,
   size: number,
@@ -99,22 +109,14 @@ export const calculatePrice = (
       price = apartment.basePrice;
       if (addOns.laundry) price += apartment.laundry;
       if (addOns.gardenSize) price += addOns.gardenSize * serviceApartmentAddons.gardenPerSqm;
-      if (addOns.upholsteryItems) {
-        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
-          price += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
-        });
-      }
+      price += calculateUpholsteryAddons(addOns.upholsteryItems);
       break;
       
     case 'deepCleaning':
       price = Math.max(size * deepCleaningPricing.pricePerSqm, deepCleaningPricing.minimum);
       if (addOns.kitchenDeep) price += deepCleaningPricing.kitchenDeepClean;
       if (addOns.gardenSize) price += addOns.gardenSize * deepCleaningPricing.gardenPerSqm;
-      if (addOns.upholsteryItems) {
-        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
-          price += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
-        });
-      }
+      price += calculateUpholsteryAddons(addOns.upholsteryItems);
       break;
       
     case 'moveInOut':
@@ -130,20 +132,11 @@ export const calculatePrice = (
       price = periodical.pricePerVisit;
       if (addOns.kitchenDeep) price += periodicalAddons.kitchenDeepClean;
       if (addOns.gardenSize) price += addOns.gardenSize * periodicalAddons.gardenPerSqm;
-      if (addOns.upholsteryItems) {
-        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
-          price += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
-        });
-      }
+      price += calculateUpholsteryAddons(addOns.upholsteryItems);
       break;
       
     case 'upholstery':
-      price = 0;
-      if (addOns.upholsteryItems) {
-        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
-          price += (upholsteryPricing.items[item as keyof typeof upholsteryPricing.items] || 0) * count;
-        });
-      }
+      price = calculateUpholsteryAddons(addOns.upholsteryItems);
       price = Math.max(price, upholsteryPricing.minimum);
       break;
   }
