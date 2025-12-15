@@ -54,39 +54,40 @@ export const periodicalDiscounts = {
   visits24: 0.20
 };
 
-export const calculateBedroomPrice = (
-  bedrooms: number,
-  serviceType: 'serviceApartments' | 'periodical'
-): number => {
-  const basePrices = serviceType === 'serviceApartments' 
-    ? { 1: 1500, 2: 2000, 3: 2500, 4: 3000, 5: 4000, 6: 5000 }
-    : { 1: 800, 2: 1200, 3: 1500, 4: 2000, 5: 2500, 6: 3000 };
-  
-  if (bedrooms <= 6) {
-    return basePrices[bedrooms as keyof typeof basePrices] || basePrices[1];
+// Base pricing constants for easier maintenance
+export const BASE_PRICES = {
+  serviceApartments: { 1: 1500, 2: 2000, 3: 2500, 4: 3000, 5: 4000, 6: 5000 },
+  periodical: { 1: 800, 2: 1200, 3: 1500, 4: 2000, 5: 2500, 6: 3000 },
+  laundry: { 1: 400, 2: 600, 3: 800, 4: 1000, 5: 1200, 6: 1500 }
+};
+
+// Configuration for extra room pricing
+export const EXTRA_ROOM_RATE = 0.25; // 25% of max price per extra room
+export const MAX_BASE_BEDROOMS = 6;
+
+// Generic pricing calculation with 25% increase for rooms above 6BR
+const calculateDynamicPrice = (bedrooms: number, priceMap: Record<number, number>): number => {
+  if (bedrooms <= MAX_BASE_BEDROOMS) {
+    return priceMap[bedrooms as keyof typeof priceMap] || priceMap[1];
   }
   
   // For 7+ bedrooms: 6BR price + 25% per extra room
-  const maxPrice = basePrices[6];
-  const extraRooms = bedrooms - 6;
-  const extraCharge = maxPrice * 0.25;
+  const maxPrice = priceMap[MAX_BASE_BEDROOMS];
+  const extraRooms = bedrooms - MAX_BASE_BEDROOMS;
+  const extraCharge = maxPrice * EXTRA_ROOM_RATE;
   
   return maxPrice + (extraRooms * extraCharge);
 };
 
+export const calculateBedroomPrice = (
+  bedrooms: number,
+  serviceType: 'serviceApartments' | 'periodical'
+): number => {
+  return calculateDynamicPrice(bedrooms, BASE_PRICES[serviceType]);
+};
+
 export const calculateLaundryPrice = (bedrooms: number): number => {
-  const laundryPrices = { 1: 400, 2: 600, 3: 800, 4: 1000, 5: 1200, 6: 1500 };
-  
-  if (bedrooms <= 6) {
-    return laundryPrices[bedrooms as keyof typeof laundryPrices] || laundryPrices[1];
-  }
-  
-  // For 7+ bedrooms: 6BR laundry + 25% per extra room
-  const maxPrice = laundryPrices[6];
-  const extraRooms = bedrooms - 6;
-  const extraCharge = maxPrice * 0.25;
-  
-  return maxPrice + (extraRooms * extraCharge);
+  return calculateDynamicPrice(bedrooms, BASE_PRICES.laundry);
 };
 
 export const deepCleaningPricing = {
