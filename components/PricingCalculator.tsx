@@ -27,6 +27,18 @@ export default function PricingCalculator() {
     { value: 'upholstery', label: t.services.upholstery.title, unit: '' },
   ];
 
+  const upholsteryItemsList = [
+    { key: 'armchair', label: 'Armchair', price: 250 },
+    { key: 'singleSeat', label: 'Single Seat Sofa', price: 350 },
+    { key: 'twoSeater', label: '2-Seater Sofa', price: 400 },
+    { key: 'threeSeater', label: '3-Seater Sofa', price: 600 },
+    { key: 'fourSeater', label: '4-Seater Sofa', price: 800 },
+    { key: 'lShape', label: 'L-Shape Sofa', price: 1000 },
+    { key: 'sectional', label: 'Sectional Sofa', price: 1200 },
+    { key: 'smallMattress', label: 'Small Mattress (120x200)', price: 400 },
+    { key: 'largeMattress', label: 'Large Mattress (180x200)', price: 600 },
+  ];
+
   // Calculate price based on service type
   const calculateEstimatedPrice = () => {
     if (serviceType === 'serviceApartments' || serviceType === 'periodical') {
@@ -99,18 +111,6 @@ export default function PricingCalculator() {
     }
     return {};
   };
-
-  const upholsteryItemsList = [
-    { key: 'armchair', label: 'Armchair', price: 250 },
-    { key: 'singleSeat', label: 'Single Seat Sofa', price: 350 },
-    { key: 'twoSeater', label: '2-Seater Sofa', price: 400 },
-    { key: 'threeSeater', label: '3-Seater Sofa', price: 600 },
-    { key: 'fourSeater', label: '4-Seater Sofa', price: 800 },
-    { key: 'lShape', label: 'L-Shape Sofa', price: 1000 },
-    { key: 'sectional', label: 'Sectional Sofa', price: 1200 },
-    { key: 'smallMattress', label: 'Small Mattress (120x200)', price: 400 },
-    { key: 'largeMattress', label: 'Large Mattress (180x200)', price: 600 },
-  ];
 
   return (
     <section id="pricing" className="py-20 bg-gradient-to-br from-primary-green to-royal-blue">
