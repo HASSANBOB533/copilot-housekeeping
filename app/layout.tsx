@@ -4,23 +4,69 @@ import './globals.css';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'BOB Home Care - Professional Cleaning Services in Egypt | Best of Bedz',
-  description: 'Egypt\'s premier professional cleaning service with 10+ years of excellence. Service apartments, deep cleaning, move-in/out, periodical cleaning in Cairo & North Coast. 100% satisfaction guaranteed.',
-  keywords: 'cleaning services egypt, professional cleaning cairo, home cleaning, deep cleaning, airbnb cleaning, service apartments, move in cleaning, north coast cleaning, new cairo cleaning, maadi cleaning, heliopolis cleaning, sheikh zayed cleaning',
-  authors: [{ name: 'Best of Bedz Home Care' }],
+  metadataBase: new URL('https://www.bobhomecare.com'),
+  title: 'BOB Home Care | Professional Cleaning Services in Egypt',
+  description: 'Egypt\'s premier professional cleaning service with international hospitality standards. Serving Cairo & North Coast.',
+  
+  // Favicon configuration
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  
+  // Open Graph (Facebook, LinkedIn, etc.)
   openGraph: {
-    title: 'BOB Home Care - Professional Cleaning Services in Egypt',
-    description: 'Egypt\'s premier professional cleaning service with 10+ years of excellence',
+    title: 'BOB Home Care | Professional Cleaning Services',
+    description: 'Egypt\'s premier professional cleaning service with international hospitality standards. 10+ years of excellence.',
     url: 'https://www.bobhomecare.com',
     siteName: 'BOB Home Care',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'BOB Home Care Professional Team',
+      },
+    ],
     locale: 'en_EG',
     type: 'website',
   },
+  
+  // Twitter Card
   twitter: {
     card: 'summary_large_image',
-    title: 'BOB Home Care - Professional Cleaning Services',
-    description: 'Egypt\'s premier professional cleaning service',
+    title: 'BOB Home Care | Professional Cleaning Services',
+    description: 'Egypt\'s premier professional cleaning service with international hospitality standards.',
+    images: ['/images/og-image.jpg'],
+    creator: '@bob_homecare',
   },
+  
+  // Additional meta
+  keywords: [
+    'cleaning services Egypt',
+    'home cleaning Cairo',
+    'professional cleaning',
+    'Airbnb cleaning',
+    'deep cleaning Egypt',
+    'move in move out cleaning',
+    'North Coast cleaning services',
+    'New Alamein cleaning',
+    'خدمات تنظيف مصر',
+    'تنظيف منازل القاهرة',
+  ],
+  
+  authors: [{ name: 'BOB Home Care' }],
+  creator: 'BOB Home Care',
+  publisher: 'BOB Home Care',
+  
   robots: {
     index: true,
     follow: true,
@@ -29,7 +75,11 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-
+  
+  verification: {
+    // Add when available
+    // google: 'your-google-verification-code',
+  },
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || '';
@@ -42,6 +92,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#00875A" />
+        <meta name="msapplication-TileColor" content="#00875A" />
+        
         {/* Google Analytics */}
         {GA_ID && (
           <>
