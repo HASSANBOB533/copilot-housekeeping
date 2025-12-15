@@ -2,14 +2,15 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { calculatePrice } from '@/lib/pricing';
+import { calculatePrice, bedroomOptions, calculateBedroomPrice, calculateLaundryPrice } from '@/lib/pricing';
 import { FaWhatsapp, FaCalculator } from 'react-icons/fa';
 import { trackQuoteRequest } from '@/lib/analytics';
 
 export default function PricingCalculator() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [serviceType, setServiceType] = useState('serviceApartments');
   const [size, setSize] = useState(0);
+  const [bedroomSelection, setBedroomSelection] = useState('studio-1br');
   const [addOns, setAddOns] = useState({
     laundry: false,
     gardenSize: 0,
@@ -26,12 +27,59 @@ export default function PricingCalculator() {
     { value: 'upholstery', label: t.services.upholstery.title, unit: '' },
   ];
 
-  const estimatedPrice = calculatePrice(serviceType, size, addOns);
+  // Calculate price based on service type
+  const calculateEstimatedPrice = () => {
+    if (serviceType === 'serviceApartments' || serviceType === 'periodical') {
+      const selectedBedroom = bedroomOptions.find(opt => opt.key === bedroomSelection);
+      const bedroomCount = selectedBedroom?.bedroomCount || 1;
+      
+      let price = calculateBedroomPrice(bedroomCount, serviceType);
+      
+      // Add laundry for service apartments
+      if (serviceType === 'serviceApartments' && addOns.laundry) {
+        price += calculateLaundryPrice(bedroomCount);
+      }
+      
+      // Add kitchen deep clean for periodical
+      if (serviceType === 'periodical' && addOns.kitchenDeep) {
+        price += 250;
+      }
+      
+      // Add garden
+      if (addOns.gardenSize) {
+        const gardenRate = serviceType === 'serviceApartments' ? 5 : 3;
+        price += addOns.gardenSize * gardenRate;
+      }
+      
+      // Add upholstery
+      if (addOns.upholsteryItems) {
+        Object.entries(addOns.upholsteryItems).forEach(([item, count]) => {
+          const itemPrice = upholsteryItemsList.find(i => i.key === item)?.price || 0;
+          price += itemPrice * count;
+        });
+      }
+      
+      return price;
+    } else {
+      return calculatePrice(serviceType, size, addOns);
+    }
+  };
+
+  const estimatedPrice = calculateEstimatedPrice();
 
   const handleGetQuote = () => {
     trackQuoteRequest(serviceType, estimatedPrice);
     const service = serviceOptions.find(s => s.value === serviceType)?.label || '';
-    const message = `Hello! I'd like to get a quote for ${service}. Property size: ${size} ${serviceOptions.find(s => s.value === serviceType)?.unit}. Estimated price: ${estimatedPrice.toLocaleString()} EGP`;
+    
+    let propertyInfo = '';
+    if (serviceType === 'serviceApartments' || serviceType === 'periodical') {
+      const selectedBedroom = bedroomOptions.find(opt => opt.key === bedroomSelection);
+      propertyInfo = `Property: ${language === 'ar' ? selectedBedroom?.labelAr : selectedBedroom?.label}`;
+    } else if (serviceType !== 'upholstery') {
+      propertyInfo = `Property size: ${size} ${serviceOptions.find(s => s.value === serviceType)?.unit}`;
+    }
+    
+    const message = `Hello! I'd like to get a quote for ${service}. ${propertyInfo}. Estimated price: ${estimatedPrice.toLocaleString()} EGP`;
     const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201273518887';
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -86,6 +134,7 @@ export default function PricingCalculator() {
                 onChange={(e) => {
                   setServiceType(e.target.value);
                   setSize(0);
+                  setBedroomSelection('studio-1br');
                   setAddOns({ laundry: false, gardenSize: 0, kitchenDeep: false, upholsteryItems: {} });
                 }}
                 className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
@@ -98,8 +147,28 @@ export default function PricingCalculator() {
               </select>
             </div>
 
-            {/* Property Size */}
-            {serviceType !== 'upholstery' && (
+            {/* Property Size - Bedroom Dropdown for Service Apartments and Periodical */}
+            {(serviceType === 'serviceApartments' || serviceType === 'periodical') && (
+              <div className="mb-6">
+                <label className="block text-lg font-medium text-gray-700 mb-3">
+                  {t.calculator.propertySize} ({t.calculator.bedrooms})
+                </label>
+                <select
+                  value={bedroomSelection}
+                  onChange={(e) => setBedroomSelection(e.target.value)}
+                  className="w-full px-4 py-3 md:py-4 min-h-[48px] text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                >
+                  {bedroomOptions.map((option) => (
+                    <option key={option.key} value={option.key}>
+                      {language === 'ar' ? option.labelAr : option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {/* Property Size - Input for Other Services */}
+            {serviceType !== 'upholstery' && serviceType !== 'serviceApartments' && serviceType !== 'periodical' && (
               <div className="mb-6">
                 <label className="block text-lg font-medium text-gray-700 mb-3">
                   {t.calculator.propertySize} ({serviceOptions.find(s => s.value === serviceType)?.unit})

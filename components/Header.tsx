@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import LanguageToggle from './LanguageToggle';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -43,24 +44,25 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className={`flex items-center ${language === 'ar' ? 'order-2' : 'order-1'}`}>
-            <div className="flex items-center gap-2">
-              {/* Placeholder logo - replace with actual logo once uploaded to /public/images/logo.png */}
-              <div className="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">BOB</span>
-              </div>
-              {/* When logo.png is added, uncomment this:
-              <Image 
-                src="/images/logo.png" 
-                alt="Best of Bedz Home Care Logo"
-                width={48}
-                height={48}
-                className="rounded-full"
+            <div className="flex items-center">
+              <Image
+                src="/images/logo.png"
+                alt="BOB Home Care"
+                width={160}
+                height={50}
+                className="h-10 sm:h-12 md:h-14 w-auto"
+                priority
+                onError={(e) => {
+                  // Fallback to text if image fails
+                  e.currentTarget.style.display = 'none';
+                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'block';
+                }}
               />
-              */}
-              <div className="hidden md:block">
-                <div className="text-lg font-bold text-primary-green">Best of Bedz</div>
-                <div className="text-xs text-gray-600">Home Care</div>
-              </div>
+              {/* Fallback text logo */}
+              <span className={`text-xl font-bold ${isScrolled ? 'text-primary-green' : 'text-white'} hidden`}>
+                BOB Home Care
+              </span>
             </div>
           </div>
 
@@ -81,15 +83,6 @@ export default function Header() {
 
           {/* CTA and Language Toggle */}
           <div className={`flex items-center gap-2 md:gap-4 ${language === 'ar' ? 'order-3' : 'order-3'}`}>
-            <a
-              href="tel:+201273518887"
-              className="hidden sm:flex items-center gap-2 text-primary-green hover:text-royal-blue transition-colors"
-              aria-label="Call us"
-            >
-              <span className={`text-sm font-medium ${isScrolled ? 'text-primary-green' : 'text-white'}`}>
-                +20 127 351 8887
-              </span>
-            </a>
             <LanguageToggle />
             <button
               onClick={() => scrollToSection('#booking')}
