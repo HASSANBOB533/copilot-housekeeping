@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
 import { trackWhatsAppClick } from '@/lib/analytics';
@@ -23,22 +24,28 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        {/* Hero bedroom image - replace with actual image once uploaded to /public/images/hero-bedroom.jpg */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-green/95 to-royal-blue/85 md:from-primary-green/90 md:to-royal-blue/80">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzMuMzE0IDAgNiAyLjY4NiA2IDZzLTIuNjg2IDYtNiA2LTYtMi42ODYtNi02IDIuNjg2LTYgNi02ek0yNCAzNmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
-        </div>
-        {/* When hero-bedroom.jpg is added, uncomment this:
-        <Image 
-          src="/images/hero-bedroom.jpg" 
-          alt="BOB team members arranging pillows on bed"
+        <Image
+          src="/images/hero-bedroom.jpg"
+          alt="BOB Home Care Professional Service"
           fill
           priority
-          className="object-cover"
+          quality={85}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSITFBUWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAQADAQEAAAAAAAAAAAAAAAEAAhEhA//aAAwDAQACEQMRAD8A2O91qC2uZYIra5uTGxVpIUBUEeRyIz9FRf3bfnP+h/RRTY0Jdk5Nn//Z"
+          className="object-cover object-center"
+          sizes="100vw"
+          onError={(e) => {
+            // Fallback to gradient if image fails
+            e.currentTarget.style.display = 'none';
+            const fallbackDiv = document.createElement('div');
+            fallbackDiv.className = 'absolute inset-0 bg-gradient-to-br from-primary-green via-emerald-700 to-emerald-900';
+            e.currentTarget.parentElement?.appendChild(fallbackDiv);
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-green/90 to-royal-blue/80" />
-        */}
+        {/* Dark Overlay - darker on mobile for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 md:from-black/50 md:via-black/40 md:to-black/60" />
       </div>
 
       {/* Content */}

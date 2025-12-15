@@ -1,0 +1,6 @@
+<svg width="160" height="50" xmlns="http://www.w3.org/2000/svg">
+  <rect width="160" height="50" fill="#00875A" rx="5"/>
+  <circle cx="25" cy="25" r="15" fill="white"/>
+  <text x="50" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Best of Bedz</text>
+  <text x="50" y="35" font-family="Arial, sans-serif" font-size="10" fill="#FFD700">Home Care</text>
+</svg>

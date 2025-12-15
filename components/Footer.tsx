@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaFacebook, FaInstagram, FaYoutube, FaLinkedin, FaWhatsapp, FaArrowUp } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
@@ -24,6 +25,27 @@ export default function Footer() {
     <>
       <footer id="contact" className="bg-gray-900 text-white">
         <div className="container mx-auto px-4 py-12">
+          {/* Logo */}
+          <div className="flex justify-center md:justify-start mb-8">
+            <Image
+              src="/images/logo-white.png"
+              alt="BOB Home Care"
+              width={160}
+              height={50}
+              className="h-12 md:h-14 w-auto"
+              onError={(e) => {
+                // Fallback to text if image fails
+                e.currentTarget.style.display = 'none';
+                const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                if (fallback) fallback.style.display = 'block';
+              }}
+            />
+            {/* Fallback text logo */}
+            <span className="text-2xl font-bold text-white hidden">
+              BOB Home Care
+            </span>
+          </div>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Contact Info */}
             <div>
