@@ -31,18 +31,9 @@ export default function Hero() {
           alt="BOB Home Care Professional Service"
           fill
           priority
-          quality={85}
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSITFBUWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAQADAQEAAAAAAAAAAAAAAAEAAhEhA//aAAwDAQACEQMRAD8A2O91qC2uZYIra5uTGxVpIUBUEeRyIz9FRf3bfnP+h/RRTY0Jdk5Nn//Z"
+          quality={90}
           className="object-cover object-center"
           sizes="100vw"
-          onError={(e) => {
-            // Fallback to gradient if image fails
-            e.currentTarget.style.display = 'none';
-            const fallbackDiv = document.createElement('div');
-            fallbackDiv.className = 'absolute inset-0 bg-gradient-to-br from-primary-green via-emerald-700 to-emerald-900';
-            e.currentTarget.parentElement?.appendChild(fallbackDiv);
-          }}
         />
         {/* Dark Overlay - darker on mobile for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 md:from-black/50 md:via-black/40 md:to-black/60" />
