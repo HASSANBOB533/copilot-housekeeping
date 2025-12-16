@@ -1,17 +1,12 @@
 'use client';
 
 import { useLanguage } from '@/context/LanguageContext';
-import { FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
-import { trackWhatsAppClick } from '@/lib/analytics';
+import { FaCheckCircle } from 'react-icons/fa';
 
 export default function Hero() {
   const { t } = useLanguage();
 
-  const handleWhatsAppClick = () => {
-    trackWhatsAppClick('hero_section');
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '201273518887';
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t.hero.whatsappUs)}`, '_blank');
-  };
+  // WhatsApp click handler removed - using floating button instead
 
   // Removed scrollToBooking - now redirects to external booking site
 
@@ -56,13 +51,7 @@ export default function Hero() {
             >
               {t.hero.getFreeQuote}
             </button>
-            <button
-              onClick={handleWhatsAppClick}
-              className="w-full sm:w-auto px-8 py-4 bg-[#25D366] text-white rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
-            >
-              <FaWhatsapp size={24} />
-              {t.hero.whatsappUs}
-            </button>
+            {/* WhatsApp button removed - using floating button instead */}
           </div>
 
           {/* Trust Badges */}
