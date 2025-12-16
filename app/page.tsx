@@ -8,7 +8,7 @@ import SpecialOffers from '@/components/SpecialOffers';
 import Testimonials from '@/components/Testimonials';
 import ServiceAreas from '@/components/ServiceAreas';
 import FAQ from '@/components/FAQ';
-import BookingForm from '@/components/BookingForm';
+// BookingForm removed - redirecting to book.bobhomecare.com instead
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
@@ -25,7 +25,7 @@ export default function Home() {
       <Testimonials />
       <ServiceAreas />
       <FAQ />
-      <BookingForm />
+      {/* BookingForm removed - redirecting to book.bobhomecare.com instead */}
       <Footer />
       <WhatsAppButton />
     </main>

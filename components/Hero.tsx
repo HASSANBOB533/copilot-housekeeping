@@ -13,9 +13,7 @@ export default function Hero() {
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t.hero.whatsappUs)}`, '_blank');
   };
 
-  const scrollToBooking = () => {
-    document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // Removed scrollToBooking - now redirects to external booking site
 
   const scrollToPricing = () => {
     document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' });
@@ -46,12 +44,12 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <button
-              onClick={scrollToBooking}
-              className="w-full sm:w-auto px-8 py-4 bg-gold-yellow text-gray-900 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg"
+            <a
+              href="https://book.bobhomecare.com"
+              className="w-full sm:w-auto px-8 py-4 bg-gold-yellow text-gray-900 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg text-center"
             >
               {t.hero.bookNow}
-            </button>
+            </a>
             <button
               onClick={scrollToPricing}
               className="w-full sm:w-auto px-8 py-4 bg-white text-primary-green rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"

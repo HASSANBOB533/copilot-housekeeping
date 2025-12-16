@@ -44,7 +44,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className={`flex items-center ${language === 'ar' ? 'order-2' : 'order-1'}`}>
-            <div className="flex items-center">
+            <a href="https://www.bobhomecare.com" className="flex items-center">
               <Image
                 src="/images/logo.png"
                 alt="BOB Home Care"
@@ -63,7 +63,7 @@ export default function Header() {
               <span className={`text-xl font-bold ${isScrolled ? 'text-primary-green' : 'text-white'} hidden`}>
                 BOB Home Care
               </span>
-            </div>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
@@ -84,12 +84,12 @@ export default function Header() {
           {/* CTA and Language Toggle */}
           <div className={`flex items-center gap-2 md:gap-4 ${language === 'ar' ? 'order-3' : 'order-3'}`}>
             <LanguageToggle />
-            <button
-              onClick={() => scrollToSection('#booking')}
+            <a
+              href="https://book.bobhomecare.com"
               className="hidden md:block px-6 py-2 bg-primary-green text-white rounded-lg hover:bg-opacity-90 transition-colors font-medium"
             >
               {t.nav.bookNow}
-            </button>
+            </a>
             
             {/* Mobile Menu Button */}
             <button
@@ -115,12 +115,12 @@ export default function Header() {
                   {link.label}
                 </button>
               ))}
-              <button
-                onClick={() => scrollToSection('#booking')}
-                className="mx-4 px-6 py-2 bg-primary-green text-white rounded-lg hover:bg-opacity-90 transition-colors font-medium text-center"
+              <a
+                href="https://book.bobhomecare.com"
+                className="mx-4 px-6 py-2 bg-primary-green text-white rounded-lg hover:bg-opacity-90 transition-colors font-medium text-center block"
               >
                 {t.nav.bookNow}
-              </button>
+              </a>
             </nav>
           </div>
         )}
