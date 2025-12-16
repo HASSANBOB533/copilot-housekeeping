@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
 import { trackWhatsAppClick } from '@/lib/analytics';
@@ -25,16 +24,10 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-bedroom.jpg"
-          alt="BOB Home Care Professional Service"
-          fill
-          priority
-          quality={90}
-          className="object-cover object-center"
-          sizes="100vw"
-        />
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/images/hero-bedroom.jpg)' }}
+      >
         {/* Dark Overlay - darker on mobile for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 md:from-black/50 md:via-black/40 md:to-black/60" />
       </div>
