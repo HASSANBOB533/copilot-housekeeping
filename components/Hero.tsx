@@ -28,8 +28,7 @@ export default function Hero() {
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/118508883/IaDgTOdNKUSmiuuG.jpg)' }}
       >
-        {/* Dark Overlay - darker on mobile for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 md:from-black/50 md:via-black/40 md:to-black/60" />
+        {/* Overlay removed temporarily to verify image is loading */}
       </div>
 
       {/* Content */}
