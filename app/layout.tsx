@@ -4,9 +4,9 @@ import './globals.css';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.bobhomecare.com'),
-  title: 'BOB Home Care | Professional Cleaning Services in Egypt',
-  description: 'Egypt\'s premier professional cleaning service with international hospitality standards. Serving Cairo & North Coast.',
+  metadataBase: new URL('https://pricing.bobhomecare.com'),
+  title: 'BOB Home Care | Get Instant Pricing for Cleaning Services',
+  description: 'Calculate your cleaning service price instantly. Professional cleaning for homes, Airbnb, and offices in Cairo & North Coast. 10+ years of excellence.',
   
   // Favicon configuration
   icons: {
@@ -24,16 +24,16 @@ export const metadata: Metadata = {
   
   // Open Graph (Facebook, LinkedIn, etc.)
   openGraph: {
-    title: 'BOB Home Care | Professional Cleaning Services',
-    description: 'Egypt\'s premier professional cleaning service with international hospitality standards. 10+ years of excellence.',
-    url: 'https://www.bobhomecare.com',
+    title: 'BOB Home Care | Get Instant Pricing for Cleaning Services',
+    description: 'Calculate your cleaning service price instantly. Professional team with 10+ years of excellence serving Cairo & North Coast.',
+    url: 'https://pricing.bobhomecare.com',
     siteName: 'BOB Home Care',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'BOB Home Care Professional Team',
+        alt: 'BOB Home Care Professional Cleaning Team',
       },
     ],
     locale: 'en_EG',
@@ -43,22 +43,24 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: 'summary_large_image',
-    title: 'BOB Home Care | Professional Cleaning Services',
-    description: 'Egypt\'s premier professional cleaning service with international hospitality standards.',
+    title: 'BOB Home Care | Get Instant Pricing',
+    description: 'Calculate your cleaning service price instantly. Professional team serving Cairo & North Coast.',
     images: ['/images/og-image.jpg'],
     creator: '@bob_homecare',
   },
   
   // Additional meta
   keywords: [
-    'cleaning services Egypt',
-    'home cleaning Cairo',
-    'professional cleaning',
-    'Airbnb cleaning',
-    'deep cleaning Egypt',
-    'move in move out cleaning',
+    'cleaning services pricing Egypt',
+    'cleaning cost calculator',
+    'home cleaning prices Cairo',
+    'professional cleaning rates',
+    'Airbnb cleaning pricing',
+    'deep cleaning cost Egypt',
+    'move in move out cleaning price',
     'North Coast cleaning services',
     'New Alamein cleaning',
+    'instant cleaning quote',
     'خدمات تنظيف مصر',
     'تنظيف منازل القاهرة',
   ],
@@ -129,7 +131,7 @@ export default function RootLayout({
               name: 'Best of Bedz Home Care',
               alternateName: 'BOB Home Care',
               description: 'Professional cleaning services in Cairo and North Coast, Egypt',
-              url: 'https://www.bobhomecare.com',
+              url: 'https://pricing.bobhomecare.com',
               telephone: '+201273518887',
               email: 'cs@bobhomecare.com',
               address: {
